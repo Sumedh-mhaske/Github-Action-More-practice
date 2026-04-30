@@ -3,7 +3,7 @@ name: ETL pipeline
 
 on:
   push:
-    branch:
+    branches:
       - main
 
 jobs:
