@@ -53,8 +53,7 @@ jobs:
 
   job6:
     runs-on: ubuntu latest
-    needs: job4
-    needs: job5
+    needs: job4 job5
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
