@@ -1,35 +1,62 @@
-# Name of the Workflow
+# Name of the workflow
 name: ETL pipeline
 
-# Define Trigger
 on:
   push:
-    branches:
+    branch:
       - main
 
 jobs:
-  extract-data-job:
-    runs-on: ubuntu-latest
+  job1:
+    runs-on: ubuntu latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Run extract_data.py
-        run: python extract_data.py
+      - name: Show job content
+        run: echo "Job 1 content"
 
-  transform-data-job:
-    runs-on: ubuntu-latest
-    needs: extract-data-job
+  job2:
+    runs-on: ubuntu latest
+    needs: job1
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Run transform_data.py
-        run: python transform_data.py
+      - name: Show job content
+        run: "Job 2 content"
 
-  load-data-job:
-    runs-on: ubuntu-latest
-    needs: transform-data-job
+  job3:
+    runs-on: ubuntu latest
+    needs: job1
     steps:
-      - name: checkout code
+      - name: Checkout code
         uses: actions/checkout@v2
-      - name: Run load_data.py
-        run: python load_data.py
+      - name: Show job content
+        run: "Job 3 content"
+
+  job4:
+    runs-on: ubuntu latest
+    needs: job2
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Show job content
+        run: "Job 4 content"
+
+  job5:
+    runs-on: ubuntu latest
+    needs: job3
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Show job content
+        run: "Job 5 content"
+
+  job6:
+    runs-on: ubuntu latest
+    needs: job4
+    needs: job5
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Show job content
+        run: "Job 6 content"
