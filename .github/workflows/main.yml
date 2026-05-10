@@ -20,7 +20,7 @@ jobs:
     needs: job1
     steps:
       - name: Checkout code
-        uses: actions/checkoute@v2
+        uses: actions/checkout@v2
 
       - name: Show job content
         run: echo "Job 2 content"
